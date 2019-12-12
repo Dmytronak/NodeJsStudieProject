@@ -37,15 +37,17 @@ exports.getCurrent = function (request, response, next) {
 
 //#endregion Get
 
-//#region Post
-
+//#region Put
 exports.update = function (request, response, next){
     authService
-        .update(req.params.id, req.body)
+        .update(request.params.id, request.body)
         .then(() => response.json({}))
         .catch(error => next(error));
 }
 
+//#endregion Put
+
+//#region Delete
 exports.deleteById = function (request, response, next) {
     authService
         .deleteById(request.params.id)
@@ -53,6 +55,9 @@ exports.deleteById = function (request, response, next) {
         .catch(error => next(error));
 }
 
+//#endregion Delete
+
+//#region Post
 exports.login = function (request, response, next) {
     authService
         .login(request.body)
